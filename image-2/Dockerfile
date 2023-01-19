@@ -5,8 +5,7 @@ WORKDIR /app
 # Copying all the application files to the working directory
 COPY . .
 # Install all the dependencies required to run the Flask application
-RUN pip install -r image-2/requirements.txt
-RUN pip install jsonify
+RUN pip install -r requirements.txt
 # Expose the Docker container for the application to run on port 5000
 EXPOSE 5100
 # The command required to run the Dockerized application
