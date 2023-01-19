@@ -5,7 +5,7 @@ WORKDIR /app
 # Copying all the application files to the working directory
 COPY . .
 # Install all the dependencies required to run the Flask application
-RUN pip install -r image-1/requirements.txt
+RUN pip install -r requirements.txt
 RUN pip install requests
 RUN pip install jsonify
 RUN pip install pytz
