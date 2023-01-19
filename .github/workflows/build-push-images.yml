@@ -45,4 +45,4 @@ jobs:
         export KUBECONFIG=kubeconfig.yaml
 
     - name: Deploy to cluster
-      run: kubectl apply -f deployment.yml
+      run: kubectl get nodes
