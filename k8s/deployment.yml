@@ -19,4 +19,4 @@ spec:
         - containerPort: 5100
         env:
         - name: NAME
-          value: "Danial"
+          value: "Danial!"
