@@ -39,10 +39,19 @@ jobs:
 
     
     steps:
-    - name: Deploy to on-premises cluster
-      run: |
-        echo "$KUBECONFIG" > kubeconfig
-        chmod 600 kubeconfig
-        export KUBECONFIG=kubeconfig
-        kubectl get nodes
+    - uses: tale/kubectl-action@v1
+      with:
+        base64-kube-config: ${{ secrets.KUBE_CONFIG }}
+    - run: kubectl get pods
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
 
