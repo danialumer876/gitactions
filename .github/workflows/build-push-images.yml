@@ -28,26 +28,3 @@ jobs:
         docker build -t danialumer876/backend:latest .
         docker push danialumer876/backend:latest
         cd ..
-        
-  Upload:
-    runs-on: ubuntu-latest
-
-    steps:
-    - name: Checkout code
-      uses: actions/checkout@v2
-
-    - name: Build and push frontend image
-      run: |
-        cd image-1
-        docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }}
-        docker build -t danialumer876/frontend:latest .
-        docker push danialumer876/frontend:latest
-        cd ..
-    
-    - name: Build and push backend image
-      run: |
-        cd image-2
-        docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }}
-        docker build -t danialumer876/backend:latest .
-        docker push danialumer876/backend:latest
-        cd ..
