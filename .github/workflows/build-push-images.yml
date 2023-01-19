@@ -34,12 +34,15 @@ jobs:
     name: Deploy to K8s
     
     runs-on: ubuntu-latest
+    env:
+      KUBECONFIG: ${{ secrets.KUBECONFIG }}
+
     
     steps:
-    - uses: actions-hub/kubectl@master
-      env:
-        KUBE_CONFIG: ${{ secrets.KUBE_CONFIG }}
+    - name: Deploy to on-premises cluster
+      run: |
+        echo "$KUBECONFIG" > kubeconfig
+        chmod 600 kubeconfig
+        export KUBECONFIG=kubeconfig
+        kubectl get nodes
 
-    - uses: actions-hub/kubectl@master
-      with:
-        args: get pods
