@@ -38,7 +38,7 @@ jobs:
       uses: actions/checkout@v2
       
     - name: Authenticate to k8s
-      run: kubectl --kubeconfig=${{ secrets.KUBECONFIG }} get nodes
+      run: --kubeconfig=${{ secrets.KUBECONFIG }} kubectl get nodes
       
     - name: Verify Deployment
       run: kubectl --kubeconfig=${{ secrets.KUBECONFIG }} get pods
