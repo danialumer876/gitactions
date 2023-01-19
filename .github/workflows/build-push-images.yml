@@ -39,10 +39,8 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v2
       
-    - name: Configure kubectl
-      run: |
-        echo "${{ secrets.KUBECONFIG }}" | base64 --decode > kubeconfig.yaml
-        export KUBECONFIG=kubeconfig.yaml
-
-    - name: Deploy to cluster
-      run: kubectl get nodes
+    - uses: actions-hub/kubectl@master
+      env:
+        KUBE_CONFIG: ${{ secrets.KUBECONFIG }}
+      with:
+        args: get pods
