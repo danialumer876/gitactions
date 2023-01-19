@@ -40,4 +40,11 @@ jobs:
     - name: Authenticate to k8s
       with:
         kubeconfig: ${{ secrets.KUBECONFIG }}
-        run: kubectl --kubeconfig=${{ secrets.KUBECONFIG }}  get nodes
+        run: kubectl get nodes --kubeconfig=${{ secrets.KUBECONFIG }}
+        
+        
+        
+        
+    - name: Verify Deployment
+      run: kubectl --kubeconfig=${{ secrets.KUBECONFIG }} get pods
+
