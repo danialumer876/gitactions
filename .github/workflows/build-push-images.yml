@@ -36,8 +36,10 @@ jobs:
     runs-on: ubuntu-latest
     
     steps:
-    - uses: tale/kubectl-action@v1
+    - uses: actions-hub/kubectl@master
+      env:
+        KUBE_CONFIG: ${{ secrets.KUBE_CONFIG }}
+
+    - uses: actions-hub/kubectl@master
       with:
-        base64-kube-config: ${{ secrets.KUBECONFIG }}
-        kubectl-version: v1.15.7
-    - run: kubectl get pods     
+        args: get pods
