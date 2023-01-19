@@ -13,8 +13,14 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v2
 
-    - name: Build and push app1 image
+    - name: Build and push frontend image
       run: |
         docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }}
         docker build -t danialumer876/frontend:latest -f image-1/Dockerfile .
         docker push danialumer876/frontend:latest
+    
+    - name: Build and push backend image
+      run: |
+        docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }}
+        docker build -t danialumer876/backend:latest -f image-2/Dockerfile .
+        docker push danialumer876/backend:latest
