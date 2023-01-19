@@ -15,6 +15,6 @@ jobs:
 
     - name: Build and push app1 image
       run: |
-        docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
+        docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }}
         docker build -t danialumer876/frontend:latest -f image-1/Dockerfile .
         docker push danialumer876/frontend:latest
