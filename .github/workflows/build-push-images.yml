@@ -28,3 +28,17 @@ jobs:
         docker build -t danialumer876/backend:latest .
         docker push danialumer876/backend:latest
         cd ..
+        
+  deploy:
+  
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2
+      
+    - name: Authenticate to k8s
+      run: kubectl --kubeconfig=${{ secrets.KUBECONFIG }} get nodes
+      
+    - name: Verify Deployment
+      run: kubectl --kubeconfig=${{ secrets.KUBECONFIG }} get pods
