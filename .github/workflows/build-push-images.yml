@@ -34,15 +34,15 @@ jobs:
     name: Deploy to K8's
     
     runs-on: ubuntu-latest
-    env:
-      KUBECONFIG: ${{ secrets.KUBECONFIG }}
 
     
     steps:
-    - uses: tale/kubectl-action@v1
+    - uses: actions/checkout@v1
+    - uses: actions-hub/kubectl@master
+      env:
+        KUBE_CONFIG: ${{ secrets.KUBE_CONFIG }}
       with:
-        base64-kube-config: ${{ secrets.KUBE_CONFIG }}
-    - run: kubectl get pods
+        args: get pods
     
     
     
