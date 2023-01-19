@@ -36,10 +36,9 @@ jobs:
     runs-on: ubuntu-latest
     
     steps:
-    - name: Checkout code
-      uses: actions/checkout@v2
-      
-    - uses: tale/kubectl-action@v1
-      with:
-        base64-kube-config: ${{ secrets.KUBECONFIG }}
-    - run: kubectl get pods
+    - uses: actions/checkout@master
+    - name: deploy to cluster
+      uses: steebchen/kubectl@v2.0.0
+      with: # defaults to latest kubectl binary version
+        config: ${{ secrets.KUBECONFIG }}
+        command: get nodes
